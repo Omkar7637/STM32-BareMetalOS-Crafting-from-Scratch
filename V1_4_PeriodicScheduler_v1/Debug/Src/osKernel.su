@@ -1,0 +1,9 @@
+/home/om/STM32CubeIDE/Chip_headers/Device/ST/STM32F4xx/Include/core_cm4.h:1814:22:__NVIC_SetPriority	16	static
+../Src/osKernel.c:42:6:osKernelStackInit	16	static
+../Src/osKernel.c:71:9:osKernelAddThreads	24	static,ignoring_inline_asm
+../Src/osKernel.c:105:6:osKernelInit	4	static
+../Src/osKernel.c:111:6:osKernelLaunch	16	static
+../Src/osKernel.c:139:29:SysTick_Handler	0	static,ignoring_inline_asm
+../Src/osKernel.c:182:6:osSchedulerLaunch	4	static,ignoring_inline_asm
+../Src/osKernel.c:218:6:osThreadYield	4	static
+../Src/osKernel.c:228:6:osSchedulerRoundRobin	8	static

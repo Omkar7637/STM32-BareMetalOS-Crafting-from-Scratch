@@ -1,0 +1,8 @@
+"./Src/led.o"
+"./Src/main.o"
+"./Src/osKernel.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Src/uart.o"
+"./Src/uart1.o"
+"./Startup/startup_stm32f446retx.o"

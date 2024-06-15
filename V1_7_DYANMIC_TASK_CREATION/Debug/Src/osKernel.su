@@ -1,0 +1,15 @@
+/home/om/STM32CubeIDE/Chip_headers/Device/ST/STM32F4xx/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
+/home/om/STM32CubeIDE/Chip_headers/Device/ST/STM32F4xx/Include/core_cm4.h:1814:22:__NVIC_SetPriority	16	static
+../Src/osKernel.c:42:6:osKernelStackInit	16	static
+../Src/osKernel.c:68:9:osKernelAddThread	24	static,ignoring_inline_asm
+../Src/osKernel.c:107:9:osKernelAddThreads	24	static
+../Src/osKernel.c:112:6:osKernelInit	4	static
+../Src/osKernel.c:117:6:osKernelLaunch	16	static
+../Src/osKernel.c:143:29:SysTick_Handler	0	static,ignoring_inline_asm
+../Src/osKernel.c:181:6:osSchedulerLaunch	4	static,ignoring_inline_asm
+../Src/osKernel.c:217:6:osThreadYield	4	static
+../Src/osKernel.c:226:6:osSchedulerRoundRobin	8	static
+../Src/osKernel.c:237:6:tim2_1hz_interrupt_init	8	static
+../Src/osKernel.c:261:6:osSemaphoreInit	16	static
+../Src/osKernel.c:266:6:osSemaphoreSet	16	static,ignoring_inline_asm
+../Src/osKernel.c:273:6:osSemaphoreWait	16	static,ignoring_inline_asm

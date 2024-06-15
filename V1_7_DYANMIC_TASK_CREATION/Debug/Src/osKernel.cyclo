@@ -1,0 +1,15 @@
+/home/om/STM32CubeIDE/Chip_headers/Device/ST/STM32F4xx/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+/home/om/STM32CubeIDE/Chip_headers/Device/ST/STM32F4xx/Include/core_cm4.h:1814:22:__NVIC_SetPriority	2
+../Src/osKernel.c:42:6:osKernelStackInit	1
+../Src/osKernel.c:68:9:osKernelAddThread	5
+../Src/osKernel.c:107:9:osKernelAddThreads	4
+../Src/osKernel.c:112:6:osKernelInit	1
+../Src/osKernel.c:117:6:osKernelLaunch	1
+../Src/osKernel.c:143:29:SysTick_Handler	1
+../Src/osKernel.c:181:6:osSchedulerLaunch	1
+../Src/osKernel.c:217:6:osThreadYield	1
+../Src/osKernel.c:226:6:osSchedulerRoundRobin	2
+../Src/osKernel.c:237:6:tim2_1hz_interrupt_init	1
+../Src/osKernel.c:261:6:osSemaphoreInit	1
+../Src/osKernel.c:266:6:osSemaphoreSet	1
+../Src/osKernel.c:273:6:osSemaphoreWait	2

@@ -1,0 +1,9 @@
+../Src/main.c:19:6:task3	1
+../Src/main.c:24:6:task0	1
+../Src/main.c:34:6:task1	1
+../Src/main.c:42:6:task2	1
+../Src/main.c:50:5:main	1
+../Src/main.c:68:6:motor_run	1
+../Src/main.c:75:6:motor_stop	1
+../Src/main.c:80:6:valve_open	1
+../Src/main.c:86:6:valve_close	1

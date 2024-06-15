@@ -1,0 +1,10 @@
+../Src/main.c:19:6:task3	4	static
+../Src/main.c:24:6:task0	8	static
+../Src/main.c:34:6:task1	4	static
+../Src/main.c:42:6:task2	4	static
+../Src/main.c:50:5:main	8	static
+../Src/main.c:72:6:TIM2_IRQHandler	4	static
+../Src/main.c:82:6:motor_run	8	static
+../Src/main.c:89:6:motor_stop	8	static
+../Src/main.c:94:6:valve_open	8	static
+../Src/main.c:101:6:valve_close	8	static
