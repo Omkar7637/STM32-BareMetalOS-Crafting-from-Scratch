@@ -16,7 +16,7 @@ This project involves crafting a bare-metal operating system from scratch for th
 
 ## Introduction
 
-This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Systems Design) course. It is conducted under the guidance of Nilesh Ghule, the Technical Director of Sunbeam. The project demonstrates how to create a simple operating system for the ARM Cortex-M STM32F446xx microcontroller without relying on any third-party libraries or RTOS. It includes basic task scheduling, interrupt handling, and synchronization primitives.
+This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Systems Design) course, which I am pursuing at Sunbeam Institute. The project is conducted under the guidance of Nilesh Ghule, the Technical Director of Sunbeam. It demonstrates how to create a simple operating system for the ARM Cortex-M STM32F446xx microcontroller without relying on any third-party libraries or RTOS. It includes basic task scheduling, interrupt handling, and synchronization primitives.
 
 ## Features
 
