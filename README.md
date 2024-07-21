@@ -82,24 +82,6 @@ This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Sys
     ```c
     osKernelLaunch(QUANTA);
     ```
-
-## Directory Structure
-
-STM32-BareMetalOS-Crafting-from-Scratch/
-├── Inc/.
-│ ├── led.h.
-│ ├── osKernel.h.
-│ ├── uart.h.
-├── Src/.
-│ ├── led.c.
-│ ├── main.c.
-│ ├── osKernel.c.
-├── STM32F446RETX_FLASH.ld.
-├── STM32F446RETX_RAM.ld.
-├── Makefile.
-├── README.md.
-
-
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
