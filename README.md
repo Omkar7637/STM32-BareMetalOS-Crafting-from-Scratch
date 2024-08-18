@@ -82,12 +82,7 @@ This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Sys
     ```c
     osKernelLaunch(QUANTA);
     ```
-
-## References
-
-- **Udemy Course:** This project is inspired by a Udemy course on embedded systems. The course can be found [here](https://www.udemy.com/share/101YbG3@PMgGGkN0W9yM1KEsL2lVzR-OaYEpmQcVjhjF7CahMGF6KaR_7EUnQ3iLGknqRtgzcA==/).
-- **Certificate:** You can view my course completion certificate [here](https://drive.google.com/file/d/1fl6nwTXFmdIuy82iB3NdUeIOpB_90S-p/view?usp=drive_link).
-
+    
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
