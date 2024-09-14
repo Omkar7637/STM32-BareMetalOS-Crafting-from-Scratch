@@ -16,7 +16,7 @@ This project involves crafting a bare-metal operating system from scratch for th
 
 ## Introduction
 
-This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Systems Design) course, which I am pursuing at Sunbeam Institute. The project is conducted under the guidance of Nilesh Ghule, the Technical Director of Sunbeam. It demonstrates how to create a simple operating system for the ARM Cortex-M STM32F446xx microcontroller without relying on any third-party libraries or RTOS. It includes basic task scheduling, interrupt handling, and synchronization primitives.
+This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Systems Design) course. It is conducted under the guidance of **Nilesh Ghule**, Technical Director of Sunbeam. The project demonstrates how to create a simple operating system for the ARM Cortex-M STM32F446xx microcontroller without relying on any third-party libraries or RTOS. It includes basic task scheduling, interrupt handling, and synchronization primitives.
 
 ## Features
 
@@ -24,14 +24,15 @@ This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Sys
 - **Interrupt Handling:** Timer-based interrupts for task switching.
 - **Semaphores:** Binary semaphores for task synchronization.
 - **Peripheral Control:** Basic control of GPIO and UART peripherals.
+- **Assembly Integration:** Critical sections are handled using assembly for optimized performance.
 
 ## Prerequisites
 
 - **Hardware:** STM32F446RE Nucleo Board
 - **Software:** 
+  - STM32CubeIDE
   - ARM GCC Compiler
   - STM32CubeMX (optional for configuration)
-  - OpenOCD (for flashing and debugging)
 
 ## Installation
 
@@ -41,15 +42,18 @@ This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Sys
     cd STM32-BareMetalOS-Crafting-from-Scratch
     ```
 
-2. **Build the Project:**
-    ```bash
-    make
-    ```
+2. **Import the Project into STM32CubeIDE:**
+   - Open **STM32CubeIDE**.
+   - Go to **File > Import > Existing Projects into Workspace**.
+   - Select the directory where you cloned the project.
+   - Click **Finish** to import the project.
 
-3. **Flash the Firmware:**
-    ```bash
-    openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program build/STM32-BareMetalOS.elf verify reset exit"
-    ```
+3. **Build the Project:**
+   - In **STM32CubeIDE**, click on the **Build** icon or press `Ctrl+B` to compile the project.
+
+4. **Flash the Firmware:**
+   - Connect your **STM32 Nucleo Board**.
+   - Click on the **Run/Debug** button in **STM32CubeIDE** to flash the firmware onto the microcontroller.
 
 ## Usage
 
@@ -82,7 +86,12 @@ This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Sys
     ```c
     osKernelLaunch(QUANTA);
     ```
-    
+
+## Directory Structure
+
+STM32-BareMetalOS-Crafting-from-Scratch/ ├── Inc/ │ ├── led.h │ ├── osKernel.h │ ├── uart.h ├── Src/ │ ├── led.c │ ├── main.c │ ├── osKernel.c ├── STM32F446RETX_FLASH.ld ├── STM32F446RETX_RAM.ld ├── Makefile ├── README.md
+
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -95,6 +104,8 @@ Contributions are welcome! Please follow these steps:
 6. Open a pull request.
 
 ## License
+
+This project is licensed under the MIT License.
 
 ## Contact
 
