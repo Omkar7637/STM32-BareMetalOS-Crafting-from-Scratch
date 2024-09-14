@@ -105,8 +105,6 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License.
-
 ## Contact
 
 Created by [Omkar7637](https://github.com/Omkar7637). This project is part of the C-DAC PG-DESD course under the guidance of Nilesh Ghule, Technical Director of Sunbeam. Feel free to contact me for any queries.
