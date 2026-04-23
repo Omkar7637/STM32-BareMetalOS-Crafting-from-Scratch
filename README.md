@@ -1,110 +1,211 @@
-# STM32 Bare Metal OS
+# STM32 Bare-Metal OS - Crafting from Scratch
 
-This project involves crafting a bare-metal operating system from scratch for the ARM Cortex-M STM32F446xx microcontroller. The OS supports basic task management and semaphore-based synchronization.
+![Platform](https://img.shields.io/badge/Platform-STM32F446RE-blue)
+![Core](https://img.shields.io/badge/Core-ARM%20Cortex--M4-informational)
+![Toolchain](https://img.shields.io/badge/Toolchain-arm--none--eabi--gcc-success)
+![IDE](https://img.shields.io/badge/IDE-STM32CubeIDE-orange)
+![Style](https://img.shields.io/badge/Project%20Type-Bare%20Metal%20Kernel-important)
 
-## Table of Contents
+An educational bare-metal OS project for STM32 that builds RTOS fundamentals from first principles: startup flow, context switching, scheduler design, periodic tasks, and semaphore-based synchronization.
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Directory Structure](#directory-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+The repository is intentionally organized as milestone versions so anyone reviewing it can see technical growth over time.
 
-## Introduction
+---
 
-This project is part of the C-DAC PG-DESD (Post Graduate Diploma in Embedded Systems Design) course. It is conducted under the guidance of **Nilesh Ghule**, Technical Director of Sunbeam. The project demonstrates how to create a simple operating system for the ARM Cortex-M STM32F446xx microcontroller without relying on any third-party libraries or RTOS. It includes basic task scheduling, interrupt handling, and synchronization primitives.
+## Why This Project Stands Out
 
-## Features
+- Designed and implemented without FreeRTOS or third-party scheduler middleware.
+- Demonstrates low-level Cortex-M exception and stack-frame behavior.
+- Shows progression from manual context switching to dynamic thread creation.
+- Combines C + inline assembly where performance/control matters.
+- Uses STM32CubeIDE-compatible project layout so it can be built and debugged immediately.
 
-- **Task Scheduling:** Round-robin scheduling with configurable time quanta.
-- **Interrupt Handling:** Timer-based interrupts for task switching.
-- **Semaphores:** Binary semaphores for task synchronization.
-- **Peripheral Control:** Basic control of GPIO and UART peripherals.
-- **Assembly Integration:** Critical sections are handled using assembly for optimized performance.
+---
 
-## Prerequisites
+## Demo Snapshot
 
-- **Hardware:** STM32F446RE Nucleo Board
-- **Software:** 
-  - STM32CubeIDE
-  - ARM GCC Compiler
-  - STM32CubeMX (optional for configuration)
+![Project Snapshot](./Screenshot%20from%202024-08-09%2014-27-43_1.png)
 
-## Installation
+---
 
-1. **Clone the Repository:**
-    ```bash
-    git clone https://github.com/Omkar7637/STM32-BareMetalOS-Crafting-from-Scratch.git
-    cd STM32-BareMetalOS-Crafting-from-Scratch
-    ```
+## Milestone Timeline
 
-2. **Import the Project into STM32CubeIDE:**
-   - Open **STM32CubeIDE**.
-   - Go to **File > Import > Existing Projects into Workspace**.
-   - Select the directory where you cloned the project.
-   - Click **Finish** to import the project.
+| Version | Focus Area | Key Outcome |
+|---|---|---|
+| `V1` | Baseline setup | Initial project scaffolding |
+| `V1_1_Manual_Context_Switching` | Manual task switching | Understand stack/register restore path |
+| `V1_2_Round_Robin` | Preemptive scheduler | Core round-robin task rotation |
+| `V1_3_CooperativeScheduler` | Cooperative model | Explicit thread yielding (`osThreadYield`) |
+| `V1_4_PeriodicScheduler_v1` | Periodic execution | Fixed-rate periodic work integration |
+| `V1_5_PeriodicScheduler_v2` | Timer-driven refinement | Improved periodic scheduling behavior |
+| `V1_6_SpinlockSemaphore` | Synchronization | Semaphore wait/set usage in task flow |
+| `V1_7_DYANMIC_TASK_CREATION` | Dynamic threads | Runtime thread creation with allocated stacks |
 
-3. **Build the Project:**
-   - In **STM32CubeIDE**, click on the **Build** icon or press `Ctrl+B` to compile the project.
+---
 
-4. **Flash the Firmware:**
-   - Connect your **STM32 Nucleo Board**.
-   - Click on the **Run/Debug** button in **STM32CubeIDE** to flash the firmware onto the microcontroller.
+## Repository Structure
 
-## Usage
+```text
+STM32-BareMetalOS-Crafting-from-Scratch/
+|- Chip_headers/                      # CMSIS + STM32 device headers
+|- V1/
+|- V1_1_Manual_Context_Switching/
+|- V1_2_Round_Robin/
+|- V1_3_CooperativeScheduler/
+|- V1_4_PeriodicScheduler_v1/
+|- V1_5_PeriodicScheduler_v2/
+|- V1_6_SpinlockSemaphore/
+|- V1_7_DYANMIC_TASK_CREATION/       # Latest milestone
+|  |- Inc/
+|  |- Src/
+|  |- Startup/
+|  |- STM32F446RETX_FLASH.ld
+|  `- STM32F446RETX_RAM.ld
+`- README.md
+```
 
-1. **Initialize and Configure UART:**
-    ```c
-    uart_tx_init();
-    ```
+---
 
-2. **Initialize the Hardware Timer:**
-    ```c
-    tim2_1hz_interrupt_init();
-    ```
+## Hardware and Toolchain
 
-3. **Initialize Semaphores:**
-    ```c
-    initializeSemaphores();
-    ```
+- **Board:** STM32 NUCLEO-F446RE
+- **MCU:** STM32F446RETx (ARM Cortex-M4)
+- **IDE:** STM32CubeIDE
+- **Compiler:** `arm-none-eabi-gcc`
+- **Debugger/Programmer:** ST-LINK (GDB server via CubeIDE)
 
-4. **Initialize the Kernel and Add Tasks:**
-    ```c
-    osKernelInit();
-    osKernelAddThreads(&task0, &task1, &task2);
-    osKernelAddThread(&task7);
-    osKernelAddThread(&task4);
-    osKernelAddThread(&task5);
-    osKernelAddThread(&task6);
-    ```
+---
 
-5. **Launch the Kernel:**
-    ```c
-    osKernelLaunch(QUANTA);
-    ```
+## Build and Flash
 
-## Directory Structure
+1. Clone:
+   ```bash
+   git clone https://github.com/Omkar7637/STM32-BareMetalOS-Crafting-from-Scratch.git
+   cd STM32-BareMetalOS-Crafting-from-Scratch
+   ```
+2. Open STM32CubeIDE.
+3. Import any milestone folder as an existing project.
+4. Build (`Ctrl+B`).
+5. Connect NUCLEO board and run/debug using ST-LINK.
 
-STM32-BareMetalOS-Crafting-from-Scratch/ ├── Inc/ │ ├── led.h │ ├── osKernel.h │ ├── uart.h ├── Src/ │ ├── led.c │ ├── main.c │ ├── osKernel.c ├── STM32F446RETX_FLASH.ld ├── STM32F446RETX_RAM.ld ├── Makefile ├── README.md
+Recommended starting point: **`V1_2_Round_Robin`**, then continue in milestone order.
 
+---
 
-## Contributing
+## Latest Architecture (`V1_7_DYANMIC_TASK_CREATION`)
 
-Contributions are welcome! Please follow these steps:
+### Core Components
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Open a pull request.
+- **Startup + Vector Table:** `Startup/startup_stm32f446retx.s`
+- **Kernel API:** `Inc/osKernel.h`
+- **Kernel implementation:** `Src/osKernel.c`
+- **Application tasks:** `Src/main.c`
+- **Memory layout:** `STM32F446RETX_FLASH.ld`
 
-## License
+### Execution Flow
+
+```text
+Reset_Handler
+   -> C runtime init (.data/.bss)
+   -> main()
+      -> uart_tx_init()
+      -> tim2_1hz_interrupt_init()
+      -> initializeSemaphores()
+      -> osKernelInit()
+      -> osKernelAddThreads(...) + osKernelAddThread(...)
+      -> osKernelLaunch(QUANTA)
+         -> SysTick configured
+         -> first task launched
+         -> SysTick_Handler performs context switch continuously
+```
+
+### Context Switching (High Level)
+
+- SysTick interrupt triggers `SysTick_Handler`.
+- Current thread state is preserved (`R4-R11`, stack pointer).
+- Scheduler selects next TCB in round-robin order.
+- Next thread state is restored and execution resumes.
+
+---
+
+## Kernel API (Current Milestone)
+
+From `V1_7_DYANMIC_TASK_CREATION/Inc/osKernel.h`:
+
+- `osKernelInit()`
+- `osKernelLaunch(uint32_t quanta)`
+- `osKernelAddThreads(void(*task0)(void), void(*task1)(void), void(*task2)(void))`
+- `osKernelAddThread(void(*task)(void))`
+- `osThreadYield()`
+- `osSemaphoreInit(int32_t *semaphore, int32_t value)`
+- `osSemaphoreSet(int32_t *semaphore)`
+- `osSemaphoreWait(int32_t *semaphore)`
+
+---
+
+## Example Runtime Setup
+
+The latest `main.c` initializes peripherals, kernel, semaphores, and launches multiple threads:
+
+```c
+uart_tx_init();
+tim2_1hz_interrupt_init();
+initializeSemaphores();
+
+osKernelInit();
+osKernelAddThreads(&task0, &task1, &task2);
+osKernelAddThread(&task7);
+osKernelAddThread(&task4);
+osKernelAddThread(&task5);
+osKernelAddThread(&task6);
+osKernelLaunch(QUANTA);
+```
+
+---
+
+## Professional Talking Points (For Recruiters/Interviewers)
+
+- Implemented a thread scheduler and context-switch path at register/stack level.
+- Built synchronization primitives and demonstrated producer/consumer-like flow.
+- Worked directly with Cortex-M exceptions (`SysTick`, timer IRQs).
+- Used linker/startup fundamentals and memory-map aware development.
+- Structured work as versioned milestones to show engineering progression.
+
+---
+
+## Limitations and Improvement Opportunities
+
+- Educational design; not yet production-hardened RTOS.
+- Semaphore wait uses busy waiting (can be replaced with blocked/wakeup scheduling).
+- Dynamic thread creation allocates stacks but currently lacks delete/reclaim APIs.
+- No automated CI/test harness yet (manual hardware validation flow).
+
+---
+
+## Recommended Learning Path
+
+1. `V1_1_Manual_Context_Switching`
+2. `V1_2_Round_Robin`
+3. `V1_3_CooperativeScheduler`
+4. `V1_4_PeriodicScheduler_v1`
+5. `V1_5_PeriodicScheduler_v2`
+6. `V1_6_SpinlockSemaphore`
+7. `V1_7_DYANMIC_TASK_CREATION`
+
+---
+
+## Contribution Guide
+
+Contributions are welcome.
+
+1. Fork the repo
+2. Create a branch (`feature/<name>`)
+3. Make focused changes with clear commit messages
+4. Validate build and flash on target board
+5. Open a pull request
+
+---
 
 ## Contact
 
-Created by [Omkar7637](https://github.com/Omkar7637). This project is part of the C-DAC PG-DESD course under the guidance of Nilesh Ghule, Technical Director of Sunbeam. Feel free to contact me for any queries.
+Created by [Omkar7637](https://github.com/Omkar7637) as part of the C-DAC PG-DESD learning journey under the guidance of Nilesh Ghule.
